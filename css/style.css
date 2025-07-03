@@ -5,6 +5,7 @@
             --accent-color: #C09F80; /* ブロンズ */
             --text-color: #333333;
             --light-gray-bg: #f8f9fa;
+            --sidebar-width: 240px;
         }
 
         body {
@@ -18,55 +19,69 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
+        .sidebar {
+            width: var(--sidebar-width);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Garamond', 'serif';
+        }
+
+        .sidebar-nav a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 12px 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            color: white;
+            background-color: var(--secondary-color);
+        }
+        
+        .sidebar-footer {
+            margin-top: auto;
+            font-size: 13px;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+        }
+
         .container {
-            max-width: 1100px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Header */
         .sticky-header {
-            position: sticky;
-            top: 0;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            z-index: 1000;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-            font-family: 'Garamond', 'serif';
-        }
-
-        .main-nav a {
-            margin-left: 25px;
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .main-nav a:hover {
-            color: var(--accent-color);
+            display: none; /* Hide top header on large screens */
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
             padding: 140px 0;
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--light-gray-bg);
         }
 
         .hero-title {
@@ -75,11 +90,13 @@
             margin: 0 0 20px;
             line-height: 1.4;
             font-family: 'Garamond', 'serif';
+            color: var(--primary-color);
         }
 
         .hero-subtitle {
             font-size: 20px;
             opacity: 0.9;
+            color: var(--text-color);
         }
 
         /* Section Base */
@@ -89,7 +106,7 @@
         }
         
         .section-light {
-            background-color: var(--light-gray-bg);
+            background-color: #fff;
         }
 
         .section-title {
@@ -118,6 +135,7 @@
             padding: 30px;
             border: 1px solid #ddd;
             border-radius: 8px;
+            background-color: white;
         }
 
         /* Approach Section */
@@ -207,6 +225,18 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sticky-header {
+                display: block;
+            }
+        }
+
         @media (max-width: 768px) {
             .main-nav { display: none; } /* Simple responsive for now */
             .hero-title { font-size: 36px; }

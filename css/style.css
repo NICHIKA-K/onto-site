@@ -116,12 +116,41 @@
             color: var(--primary-color);
         }
 
+        /* About Section */
         .section p {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             font-size: 18px;
             line-height: 2.0;
+        }
+
+        /* Company Profile Section */
+        .company-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            text-align: left;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+        }
+
+        .info-item h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .info-item p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* Problem Section */

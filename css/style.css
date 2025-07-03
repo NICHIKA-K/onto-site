@@ -1,31 +1,38 @@
         :root {
-            --primary-color: #333;
-            --background-color: #fff;
-            --accent-color: #eaf6ff;
-            --accent-color-dark: #4a90e2;
+            --primary-color: #1A237E; /* ダークネイビー */
+            --secondary-color: #3C499E;
+            --background-color: #FFFFFF;
+            --accent-color: #C09F80; /* ブロンズ */
+            --text-color: #333333;
+            --light-gray-bg: #f8f9fa;
         }
 
         body {
             margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
             font-size: 16px;
             line-height: 1.8;
-            color: var(--primary-color);
+            color: var(--text-color);
             background-color: var(--background-color);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
-            max-width: 960px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         /* Header */
-        header {
-            padding: 20px 0;
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
+            z-index: 1000;
         }
 
         .header-content {
@@ -35,53 +42,105 @@
         }
 
         .brand-logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             color: var(--primary-color);
             text-decoration: none;
+            font-family: 'Garamond', 'serif';
+        }
+
+        .main-nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--accent-color);
         }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 120px 0;
+            padding: 140px 0;
+            background-color: var(--primary-color);
+            color: white;
         }
 
-        .hero h1 {
-            font-size: 42px;
+        .hero-title {
+            font-size: 48px;
             font-weight: 700;
             margin: 0 0 20px;
             line-height: 1.4;
+            font-family: 'Garamond', 'serif';
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            opacity: 0.9;
         }
 
         /* Section Base */
         .section {
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
         }
         
-        .section:nth-child(odd) {
-            background-color: var(--accent-color);
+        .section-light {
+            background-color: var(--light-gray-bg);
         }
 
         .section-title {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 40px;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            font-family: 'Garamond', 'serif';
+            color: var(--primary-color);
         }
 
         .section p {
-            max-width: 680px;
+            max-width: 720px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Services */
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .problem-item {
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* Approach Section */
+        .approach-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .step-item {
+            flex: 1;
+        }
+        .step-item span {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Services Section */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-top: 50px;
             text-align: left;
         }
 
@@ -102,7 +161,40 @@
         .service-item h3 {
             font-size: 20px;
             margin-top: 0;
-            color: var(--accent-color-dark);
+            color: var(--secondary-color);
+        }
+
+        /* Use Case Section */
+        .case-study {
+            background-color: var(--light-gray-bg);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent-color);
+            text-align: left;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .cta-title {
+            color: white;
+            font-size: 32px;
+        }
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #A58467; /* Darker Bronze */
         }
 
         /* Footer */
@@ -116,13 +208,8 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0;
-            }
-            .hero h1 {
-                font-size: 32px;
-            }
-            .section-title {
-                font-size: 28px;
-            }
+            .main-nav { display: none; } /* Simple responsive for now */
+            .hero-title { font-size: 36px; }
+            .section-title { font-size: 28px; }
+            .approach-steps { flex-direction: column; }
         }
